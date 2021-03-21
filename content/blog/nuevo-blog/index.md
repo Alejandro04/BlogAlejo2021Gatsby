@@ -3,6 +3,7 @@ title: Nuevo Blog
 date: "2021-03-21"
 description: "Nuevo Blog"
 ---
+![Blog](./img.png)
 
 Hola! 
 
