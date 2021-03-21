@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Alejandro Roa - Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Alejandro Roa`,
+      summary: `Software Engineer`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `Aprenderemos Javascript, Typescript, React.js, Angular, Node.js, Patrones de diseño y otros.`,
+    siteUrl: `https://alejandroroa2021`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `alejandroroa04`,
     },
   },
   plugins: [
@@ -112,7 +112,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
+        name: `Alejandro Roa - Blog`,
         short_name: `GatsbyJS`,
         start_url: `/`,
         background_color: `#ffffff`,
