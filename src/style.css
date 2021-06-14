@@ -331,3 +331,44 @@ a:focus {
     list-style-position: inside;
   }
 }
+
+.new-header-section{
+  background: rgb(99,43,203);
+  background: linear-gradient(90deg, rgba(99,43,203,0.9640231092436975) 0%, rgba(166,57,212,1) 150%, rgba(166,57,212,1) 250%);
+  width: 100%;
+  height: 400px;
+}
+.new-header-title{
+  text-align: center;
+  position: relative;
+  top: 80px;
+}
+.new-header-title p, .new-header-title h1 a{
+  color: #fff;
+  font-weight: 600 !important;
+}
+.new-header-title .header-link-home{
+  color: #fff;
+}
+.new-header-title .header-link-home{
+  font-size: 2em !important;
+}
+.new-header-title p{
+  font-size: 1.5em;
+  font-weight: 100 !important;
+  margin-top: 10px !important;
+}
+.new-header-title .bio-avatar{
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+}
+.new-layout{
+  width: 60%;
+  margin: auto;
+}
+.title-internal-page{
+  text-align: center;
+  position: relative;
+  top: 80px;
+}

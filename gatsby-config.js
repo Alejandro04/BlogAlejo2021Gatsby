@@ -1,12 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `Alejandro Roa - Blog`,
+    title: `Alejandro Roa`,
     author: {
       name: `Alejandro Roa`,
       summary: `Software Engineer`,
     },
-    description: `Aprenderemos Javascript, Typescript, React.js, Angular, Node.js, Patrones de diseño y otros.`,
-    siteUrl: `https://alejandroroa2021`,
+    description: `Aprenderemos Javascript, Typescript, React.js, Angular, Node.js, Nest.js y otros.`,
+    siteUrl: `https://alejodev.com`,
     social: {
       twitter: `alejandroroa04`,
     },

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
@@ -8,27 +9,48 @@ const Layout = ({ location, title, children }) => {
 
   if (isRootPath) {
     header = (
-      <h1 className="main-heading">
-        <Link to="/">{title}</Link>
-      </h1>
+      <div>
+        <h1 className="main-heading">
+          <Link to="/">{title}</Link>
+        </h1>
+        <StaticImage
+          className="bio-avatar"
+          layout="fixed"
+          formats={["AUTO", "WEBP", "AVIF"]}
+          src="../images/profile-pic.png"
+          width={100}
+          height={100}
+          quality={95}
+          alt="Alejandro Roa"
+        />
+        <p>Software Engineer</p>
+      </div>
     )
   } else {
     header = (
-      <Link className="header-link-home" to="/">
-        {title}
-      </Link>
+      <div className="title-internal-page">
+        <Link className="header-link-home" to="/">
+          {title}
+        </Link>
+      </div>
     )
   }
 
   return (
-    <div className="global-wrapper" data-is-root-path={isRootPath}>
-      <header className="global-header">{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
+    <div>
+      <div className="new-header-section">
+        <div className="new-header-title">
+          <div>{header}</div>
+        </div>
+      </div>
+      <div className="global-wrapper" data-is-root-path={isRootPath}>
+        <main>{children}</main>
+        <footer>
+          © {new Date().getFullYear()}, Built with
         {` `}
-        <a href="https://www.gatsbyjs.com">Gatsby</a>
-      </footer>
+          <a href="https://www.gatsbyjs.com">Gatsby</a>
+        </footer>
+      </div>
     </div>
   )
 }
