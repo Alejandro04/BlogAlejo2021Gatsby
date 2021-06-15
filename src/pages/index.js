@@ -21,12 +21,26 @@ const BlogIndex = ({ data, location }) => {
     )
   }
 
+  const languageEnglish = <div className="languagesContainer">
+    <div onClick={e => setDefaultLangKey('en')}>English</div>
+    <div style={{ marginLeft: '10px' }} onClick={e => setDefaultLangKey('es')}>Spanish</div>
+  </div>
+
+  const languageSpanish = <div className="languagesContainer">
+    <div onClick={e => setDefaultLangKey('en')}>Inglés</div>
+    <div style={{ marginLeft: '10px' }} onClick={e => setDefaultLangKey('es')}>Español</div>
+  </div>
+
   return (
     <Layout location={location} title={siteTitle}>
-      <div className="languagesContainer">
-        <div onClick={e => setDefaultLangKey('en')}>English</div>
-        <div style={{marginLeft: '10px'}} onClick={e => setDefaultLangKey('es')}>Spanish</div>
-      </div>
+      {
+        defaultLangKey === 'es' &&
+        languageSpanish
+      }
+      {
+        defaultLangKey === 'en' &&
+        languageEnglish
+      }
       <SEO title="Blog" />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
