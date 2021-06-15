@@ -372,3 +372,10 @@ a:focus {
   position: relative;
   top: 80px;
 }
+.languagesContainer{
+  display: flex;
+  justify-content: center;
+}
+.languagesContainer:hover{
+  cursor: pointer;
+}

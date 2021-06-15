@@ -2,10 +2,11 @@
 title: Nuevo Blog
 date: "2021-03-21"
 description: "Nuevo Blog"
+langKey: "es"
 ---
-![Blog](./img.png)
+![Blog](./images/1.png)
 
-Hola! 
+Hola!
 
 Decidí crear un nuevo blog con una herramienta distinta a <a href="https://alejandroroa.now.sh/" target="_blank">mi viejo sitio web</a>
 

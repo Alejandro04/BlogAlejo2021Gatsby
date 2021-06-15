@@ -8,6 +8,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const { langs, defaultLangKey } = data.site.siteMetadata.languages;
 
   return (
     <Layout location={location} title={post.frontmatter.title}>
@@ -71,7 +72,11 @@ export const pageQuery = graphql`
   ) {
     site {
       siteMetadata {
-        title
+        title,
+        languages {
+          defaultLangKey
+          langs
+        }    
       }
     }
     markdownRemark(id: { eq: $id }) {

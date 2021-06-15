@@ -1,13 +1,16 @@
-import * as React from "react"
+import React, { useState } from 'react';
 import { Link, graphql } from "gatsby"
 
-import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 const BlogIndex = ({ data, location }) => {
+
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
+  //const { langs, defaultLangKey } = data.site.siteMetadata.languages;
+  const [defaultLangKey, setDefaultLangKey] = useState('es')
+
 
   if (posts.length === 0) {
     return (
@@ -22,37 +25,44 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <div className="languagesContainer">
+        <div onClick={e => setDefaultLangKey('en')}>English</div>
+        <div style={{marginLeft: '10px'}} onClick={e => setDefaultLangKey('es')}>Spanish</div>
+      </div>
       <SEO title="Blog" />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
-          const title = post.frontmatter.title || post.fields.slug
-
-          return (
-            <li key={post.fields.slug}>
-              <article
-                className="post-list-item"
-                itemScope
-                itemType="http://schema.org/Article"
-              >
-                <header>
-                  <h2>
-                    <Link to={post.fields.slug} itemProp="url">
-                      <span itemProp="headline">{title}</span>
-                    </Link>
-                  </h2>
-                  <small>{post.frontmatter.date}</small>
-                </header>
-                <section>
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: post.frontmatter.description || post.excerpt,
-                    }}
-                    itemProp="description"
-                  />
-                </section>
-              </article>
-            </li>
-          )
+          if (post.frontmatter.langKey === defaultLangKey) {
+            const title = post.frontmatter.title || post.fields.slug
+            return (
+              <li key={post.fields.slug}>
+                <article
+                  className="post-list-item"
+                  itemScope
+                  itemType="http://schema.org/Article"
+                >
+                  <header>
+                    <h2>
+                      <Link to={post.fields.slug} itemProp="url">
+                        <span itemProp="headline">{title}</span>
+                      </Link>
+                    </h2>
+                    <small>{post.frontmatter.date}</small>
+                  </header>
+                  <section>
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html: post.frontmatter.description || post.excerpt,
+                      }}
+                      itemProp="description"
+                    />
+                  </section>
+                </article>
+              </li>
+            )
+          } else {
+            return <div></div>
+          }
         })}
       </ol>
     </Layout>
@@ -65,7 +75,11 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title
+        title,
+        languages {
+          defaultLangKey
+          langs
+        }    
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
@@ -77,7 +91,8 @@ export const pageQuery = graphql`
         frontmatter {
           date(formatString: "MMMM DD, YYYY")
           title
-          description
+          description,
+          langKey
         }
       }
     }
