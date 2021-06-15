@@ -15,15 +15,6 @@ module.exports = {
     },
   },
   plugins: [
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyForNull: 'any',
-        langKeyDefault: languages.defaultLangKey,
-        useLangKeyLayout: true,
-        prefixDefault: false,
-      }
-    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,

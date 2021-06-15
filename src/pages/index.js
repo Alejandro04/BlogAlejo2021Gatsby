@@ -8,9 +8,7 @@ const BlogIndex = ({ data, location }) => {
 
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-  //const { langs, defaultLangKey } = data.site.siteMetadata.languages;
   const [defaultLangKey, setDefaultLangKey] = useState('es')
-
 
   if (posts.length === 0) {
     return (
@@ -75,11 +73,7 @@ export const pageQuery = graphql`
   query {
     site {
       siteMetadata {
-        title,
-        languages {
-          defaultLangKey
-          langs
-        }    
+        title
       }
     }
     allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
