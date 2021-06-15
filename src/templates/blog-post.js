@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import * as React from "react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,6 +8,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const { langs, defaultLangKey } = data.site.siteMetadata.languages;
 
   return (
     <Layout location={location} title={post.frontmatter.title}>
@@ -42,10 +43,7 @@ const BlogPostTemplate = ({ data, location }) => {
           }}
         >
           <li>
-            {
-              
-
-            previous && (
+            {previous && (
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
@@ -74,7 +72,7 @@ export const pageQuery = graphql`
   ) {
     site {
       siteMetadata {
-        title 
+        title
       }
     }
     markdownRemark(id: { eq: $id }) {
@@ -84,8 +82,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        description,
-        langKey
+        description
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
