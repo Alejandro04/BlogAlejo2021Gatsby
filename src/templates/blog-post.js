@@ -1,4 +1,4 @@
-import * as React from "react"
+import React, { useState, useEffect } from 'react';
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -8,6 +8,29 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+  const [defaultLangKey, setDefaultLangKey] = useState('es')
+
+  useEffect(() => {
+    const lang = localStorage.getItem('lang')
+    if (lang) {
+      setDefaultLangKey(lang)
+    }
+  }, [])
+
+  let prevDev = ""
+  if (previous && (previous.frontmatter.langKey === defaultLangKey)) {
+    prevDev = <Link to={previous.fields.slug} rel="prev">
+      ← {previous.frontmatter.title}
+    </Link>
+  }
+
+  let nextDev = ""
+  if (next && (next.frontmatter.langKey === defaultLangKey)) {
+    nextDev = <Link to={next.fields.slug} rel="next">
+      {next.frontmatter.title} →
+  </Link>
+  }
+
 
   return (
     <Layout location={location} title={post.frontmatter.title}>
@@ -42,18 +65,10 @@ const BlogPostTemplate = ({ data, location }) => {
           }}
         >
           <li>
-            {previous && (
-              <Link to={previous.fields.slug} rel="prev">
-                ← {previous.frontmatter.title}
-              </Link>
-            )}
+            {prevDev}
           </li>
           <li>
-            {next && (
-              <Link to={next.fields.slug} rel="next">
-                {next.frontmatter.title} →
-              </Link>
-            )}
+            {nextDev}
           </li>
         </ul>
       </nav>
@@ -81,7 +96,8 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
-        description
+        description,
+        langKey
       }
     }
     previous: markdownRemark(id: { eq: $previousPostId }) {
@@ -89,7 +105,8 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        title
+        title,
+        langKey
       }
     }
     next: markdownRemark(id: { eq: $nextPostId }) {
@@ -97,7 +114,8 @@ export const pageQuery = graphql`
         slug
       }
       frontmatter {
-        title
+        title,
+        langKey
       }
     }
   }
