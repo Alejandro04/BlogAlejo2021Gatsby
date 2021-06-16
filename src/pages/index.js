@@ -12,7 +12,9 @@ const BlogIndex = ({ data, location }) => {
 
   useEffect(() => {
     const lang = localStorage.getItem('lang')
-    setDefaultLangKey(lang)
+    if(lang){
+      setDefaultLangKey(lang)
+    }
   }, [])
   
   const updateLang = (lang) => {
