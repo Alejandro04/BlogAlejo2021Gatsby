@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -9,6 +9,16 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
   const [defaultLangKey, setDefaultLangKey] = useState('es')
+
+  useEffect(() => {
+    const lang = localStorage.getItem('lang')
+    setDefaultLangKey(lang)
+  }, [])
+  
+  const updateLang = (lang) => {
+    setDefaultLangKey(lang)
+    localStorage.setItem('lang', lang)
+  }
 
   if (posts.length === 0) {
     return (
@@ -22,13 +32,13 @@ const BlogIndex = ({ data, location }) => {
   }
 
   const languageEnglish = <div className="languagesContainer">
-    <div onClick={e => setDefaultLangKey('en')}>English</div>
-    <div style={{ marginLeft: '10px' }} onClick={e => setDefaultLangKey('es')}>Spanish</div>
+    <div onClick={e => updateLang('en')}>English</div>
+    <div style={{ marginLeft: '10px' }} onClick={e => updateLang('es')}>Spanish</div>
   </div>
 
   const languageSpanish = <div className="languagesContainer">
-    <div onClick={e => setDefaultLangKey('en')}>Inglés</div>
-    <div style={{ marginLeft: '10px' }} onClick={e => setDefaultLangKey('es')}>Español</div>
+    <div onClick={e => updateLang('en')}>Inglés</div>
+    <div style={{ marginLeft: '10px' }} onClick={e => updateLang('es')}>Español</div>
   </div>
 
   return (
