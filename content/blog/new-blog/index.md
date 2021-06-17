@@ -1,6 +1,6 @@
 ---
 title: New Blog
-date: "2021-03-21"
+date: "March 21, 2021"
 description: "New Blog"
 langKey: "en"
 ---
