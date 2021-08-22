@@ -77,8 +77,8 @@ npm run test
 
 ![Blog](./images/post4-5.jpg)
 
-10. **Accessibility rules:** Jest-Axe is inspired by axe-core which, in its Github repository explains the accessibility rules explicitly, you can see the correct and incorrect ways to implement each component. On the right side you can see the ACT-Rules column and there the link that redirects you to the examples by element. You can see that repository <a href="https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md" target="_blank">HERE</a>
+10. **Accessibility rules:** Jest-Axe is inspired by axe-core, in its Github repository explains the accessibility rules explicitly, you can see the correct and incorrect ways to implement each component. On the right side you can see the ACT-Rules column and there the link that redirects you to the examples by element. You can see that repository <a href="https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md" target="_blank">HERE</a>
 
-11. **The project that we are testing** you can download it <a href="https://github.com/Alejandro04/NxAngular" target="_blank">HERE</a>
+11. **The project that we are testing**: You can download it <a href="https://github.com/Alejandro04/NxAngular" target="_blank">HERE</a>
 
 I hope you find it useful, greetings!
