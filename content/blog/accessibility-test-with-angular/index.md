@@ -1,5 +1,5 @@
 ---
-title: Accesibility test with Angular
+title: Accessibility test with Angular
 date: "August 21, 2021"
 description: "Accessibility testing allows us to verify if the html we implement is correct, which ensures that users will be able to access all components and elements of new systems at the UI level."
 langKey: "en"
